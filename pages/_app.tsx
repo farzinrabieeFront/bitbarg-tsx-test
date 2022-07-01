@@ -8,7 +8,6 @@ import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
 import rtlPlugin from "stylis-plugin-rtl";
 import createCache from "@emotion/cache";
-import { prefixer } from "stylis";
 import "./../styles/globals.css";
 import { StylesProvider, createGenerateClassName } from "@mui/styles";
 
@@ -19,7 +18,7 @@ const generateClassName = createGenerateClassName({
 // Create rtl cache
 const cacheRtl = createCache({
   key: "muirtl",
-  stylisPlugins: [prefixer, rtlPlugin],
+  stylisPlugins: [rtlPlugin],
 });
 
 // Client-side cache, shared for the whole session of the user in the browser.
