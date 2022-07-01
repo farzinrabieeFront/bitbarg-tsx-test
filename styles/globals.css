@@ -1,9 +1,23 @@
+@font-face {
+  src: url("../public/assets/iransans/IRANSansWeb.eot");
+  src: url("../public/assets/iransans/IRANSansWeb.ttf");
+  src: url("../public/assets/iransans/IRANSansWeb.woff");
+  src: url("../public/assets/iransans/IRANSansWeb.woff2");
+
+
+
+
+  font-family: "iransans";
+}
+
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "iransans" !important;
+  font-weight: 400 !important;
+
 }
 
 a {
@@ -13,4 +27,15 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: "iransans" !important;
+  font-weight: 400 !important;
+}
+.css-17vbkzs-MuiFormControl-root-MuiTextField-root{
+  margin: 0 !important;
+}
+.MuiInputBase-root{
+  height: 49px !important;
+}
+.css-15wwp11-MuiTableHead-root{
+  background: #fafafa;
 }

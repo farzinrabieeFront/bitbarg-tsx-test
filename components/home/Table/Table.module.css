@@ -1,0 +1,22 @@
+.table{
+    min-width: 650px;
+    box-shadow:none;
+}
+.textLight{
+    color: rgba(0,0,0,0.5);
+}
+.parentnumber{
+    display: flex;justify-content: end;
+    margin-left: 5px;
+}
+.number{
+background: #e0e0e0;
+    display: inline-block;
+    margin-right: 3px;
+    font-weight: 600;
+height: 20px;
+min-width: 15px;
+border-radius: 2px;
+
+
+}

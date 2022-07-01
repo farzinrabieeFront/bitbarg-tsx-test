@@ -1,0 +1,31 @@
+.filterSearch{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.btnFer{
+    padding: 0 47px;
+    height: 49px;
+    border: 1px solid #e0e0e0;
+}
+.btns{
+    display: flex;
+    width: 345px;
+    border: 1px solid #e0e0e0;
+
+    border-radius: 8px;
+    height: 52px;
+}
+.btnActive{
+    margin: 4px;
+background: #4285F21A;
+    color: #4285F2;
+    font-weight: 400;
+}
+.btnDeActive{
+    margin: 3px;
+    color: black;
+    font-weight: 400;
+}
