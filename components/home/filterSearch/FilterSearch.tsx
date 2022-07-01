@@ -44,12 +44,13 @@ const FilterSearch = ({
   searchText,
   setsearchText,
 }: filterProps) => {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("eventtt", event.target.value);
+  const handleChange = (event: any) => {
     let data = event.target.value;
-    setsort({
-      value: data.value,
-      label: data.label,
+    setsort((prev: any) => {
+      return {
+        value: data.value,
+        label: data.label,
+      };
     });
   };
   return (
@@ -124,7 +125,7 @@ const FilterSearch = ({
                         </InputAdornment>
                       ),
                     }
-                  : ""
+                  : {}
               }
             >
               {sortValue.map((option: any) => (
