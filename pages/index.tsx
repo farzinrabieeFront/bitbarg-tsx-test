@@ -26,7 +26,7 @@ const Home: NextPage = ({ result }: any) => {
   useEffect(() => {
     if (flag) {
       setpageNumber(1);
-      requestData;
+      requestData("FILTER");
     }
     setFlag(true);
   }, [searchText, sort]);
@@ -36,7 +36,7 @@ const Home: NextPage = ({ result }: any) => {
       .get(
         `https://api.bitbarg.me/api/v1/currencies?page=${
           type === "MORE" ? pageNumber : 1
-        }&q=${searchText.trim()}&sort=${sort ? sort.value : ""}`
+        }&q=${searchText.trim()}${sort ? "&sort=" + sort.value : ""}`
       )
       .then((res) => {
         if (res.data.success) {

@@ -1,7 +1,7 @@
 .filterSearch{
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    align-items: center;
     margin-bottom: 20px;
     width: 100%;
 }
@@ -20,12 +20,12 @@
 }
 .btnActive{
     margin: 4px;
-background: #4285F21A;
-    color: #4285F2;
+background: #4285F21A !important;
+    color: #4285F2 !important;
     font-weight: 400;
 }
 .btnDeActive{
     margin: 3px;
-    color: black;
+    color: black !important;
     font-weight: 400;
 }

@@ -6,10 +6,16 @@ import {
   Button,
   IconButton,
   InputAdornment,
+  MenuItem,
   TextField,
 } from "@mui/material";
 import { makeStyles, withStyles } from "@mui/styles";
-import { Search, StarOutline } from "@mui/icons-material";
+import {
+  AccountCircleOutlined,
+  Close,
+  Search,
+  StarOutline,
+} from "@mui/icons-material";
 const CustomTextField = withStyles({
   root: {
     "& .MuiOutlinedInput-root": {
@@ -38,6 +44,14 @@ const FilterSearch = ({
   searchText,
   setsearchText,
 }: filterProps) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("eventtt", event.target.value);
+    let data = event.target.value;
+    setsort({
+      value: data.value,
+      label: data.label,
+    });
+  };
   return (
     <>
       <div className={styles.filterSearch}>
@@ -73,24 +87,52 @@ const FilterSearch = ({
           </Box>
 
           <Box width={195} mx={"6px"}>
-            <Autocomplete
-              options={sortValue}
-              getOptionLabel={(option) => option.label}
-              id="controlled"
-              value={sort}
-              onChange={(event, newValue) => {
-                setsort(newValue);
-              }}
-              renderInput={(params) => (
-                <CustomTextField
-                  {...params}
-                  label="ترتیب بر اساس"
-                  margin="normal"
-                  fullWidth
-                />
-              )}
-              // className={classes.autocomplete}
-            />
+            {/*<Autocomplete*/}
+            {/*  options={sortValue}*/}
+            {/*  getOptionLabel={(option) => option.label}*/}
+            {/*  id="controlled"*/}
+            {/*  value={sort}*/}
+            {/*  onChange={(event, newValue) => {*/}
+            {/*    setsort(newValue);*/}
+            {/*  }}*/}
+            {/*  renderInput={(params) => (*/}
+            {/*    <CustomTextField*/}
+            {/*      {...params}*/}
+            {/*      label="ترتیب بر اساس"*/}
+            {/*      margin="normal"*/}
+            {/*      fullWidth*/}
+            {/*    />*/}
+            {/*  )}*/}
+            {/*  // className={classes.autocomplete}*/}
+            {/*/>*/}
+            <TextField
+              id="outlined-select-currency"
+              select
+              fullWidth
+              label="ترتیب بر اساس"
+              value={sort?.label}
+              onChange={handleChange}
+              InputProps={
+                sort
+                  ? {
+                      startAdornment: (
+                        <InputAdornment position="end">
+                          <Close
+                            style={{ cursor: "pointer" }}
+                            onClick={() => setsort(null)}
+                          />
+                        </InputAdornment>
+                      ),
+                    }
+                  : ""
+              }
+            >
+              {sortValue.map((option: any) => (
+                <MenuItem key={option.value} value={option}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
           </Box>
         </Box>
         <Box>

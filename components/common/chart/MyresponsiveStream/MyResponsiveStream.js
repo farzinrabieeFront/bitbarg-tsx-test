@@ -107,9 +107,7 @@ const MyResponsiveStream = ({ data, row }) => {
       setmain(chart);
     }
   }, [chart]);
-  useEffect(() => {
-    console.log("main", main);
-  }, [main]);
+
   return (
     <>
       <ResponsiveLine
