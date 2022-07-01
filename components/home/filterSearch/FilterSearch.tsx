@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./FIlterSearch.module.css";
 import {
   Autocomplete,
@@ -22,7 +22,6 @@ const CustomTextField = withStyles({
       "& fieldset": {
         borderRadius: 8,
         border: "1px solid #e0e0e0",
-        height: "50px",
       },
     },
   },
@@ -36,6 +35,8 @@ type filterProps = {
   setsearchText: any;
 };
 
+let info = "";
+
 const FilterSearch = ({
   filterPrice,
   setfilterPrice,
@@ -46,6 +47,8 @@ const FilterSearch = ({
 }: filterProps) => {
   const handleChange = (event: any) => {
     let data = event.target.value;
+    console.log("data", data);
+
     setsort((prev: any) => {
       return {
         value: data.value,
@@ -53,6 +56,13 @@ const FilterSearch = ({
       };
     });
   };
+  useEffect(() => {
+    console.log("sort", sort);
+  }, [sort]);
+
+  useEffect(() => {
+    info = sort?.label ? sort.label : "";
+  }, [sort?.label]);
   return (
     <>
       <div className={styles.filterSearch}>
@@ -76,7 +86,12 @@ const FilterSearch = ({
         </Box>
 
         <Box display={"flex"} alignItems="center">
-          <Box mx={"6px"} display={"flex"} alignItems={"center"}>
+          <Box
+            mx={"6px"}
+            display={"flex"}
+            style={{ height: "56px" }}
+            alignItems={"center"}
+          >
             <Button
               className={styles.btnFer}
               variant="outlined"
@@ -88,52 +103,48 @@ const FilterSearch = ({
           </Box>
 
           <Box width={195} mx={"6px"}>
-            {/*<Autocomplete*/}
-            {/*  options={sortValue}*/}
-            {/*  getOptionLabel={(option) => option.label}*/}
-            {/*  id="controlled"*/}
-            {/*  value={sort}*/}
-            {/*  onChange={(event, newValue) => {*/}
-            {/*    setsort(newValue);*/}
-            {/*  }}*/}
-            {/*  renderInput={(params) => (*/}
-            {/*    <CustomTextField*/}
-            {/*      {...params}*/}
-            {/*      label="ترتیب بر اساس"*/}
-            {/*      margin="normal"*/}
-            {/*      fullWidth*/}
-            {/*    />*/}
-            {/*  )}*/}
-            {/*  // className={classes.autocomplete}*/}
-            {/*/>*/}
-            <TextField
-              id="outlined-select-currency"
-              select
-              fullWidth
-              label="ترتیب بر اساس"
-              value={sort?.label}
-              onChange={handleChange}
-              InputProps={
-                sort
-                  ? {
-                      startAdornment: (
-                        <InputAdornment position="end">
-                          <Close
-                            style={{ cursor: "pointer" }}
-                            onClick={() => setsort(null)}
-                          />
-                        </InputAdornment>
-                      ),
-                    }
-                  : {}
-              }
-            >
-              {sortValue.map((option: any) => (
-                <MenuItem key={option.value} value={option}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
+            <Autocomplete
+              options={sortValue}
+              size={"medium"}
+              getOptionLabel={(option) => option.label}
+              id="controlled"
+              value={sort}
+              onChange={(event, newValue) => {
+                setsort(newValue);
+              }}
+              renderInput={(params) => (
+                <CustomTextField {...params} label="ترتیب بر اساس" fullWidth />
+              )}
+              // className={classes.autocomplete}
+            />
+            {/*<TextField*/}
+            {/*  id="outlined-select-currency"*/}
+            {/*  select*/}
+            {/*  fullWidth*/}
+            {/*  label="ترتیب بر اساس"*/}
+            {/*  value={sort?.label}*/}
+            {/*  onChange={handleChange}*/}
+            {/*  InputProps={*/}
+            {/*    sort*/}
+            {/*      ? {*/}
+            {/*          startAdornment: (*/}
+            {/*            <InputAdornment position="end">*/}
+            {/*              <Close*/}
+            {/*                style={{ cursor: "pointer" }}*/}
+            {/*                onClick={() => setsort(null)}*/}
+            {/*              />*/}
+            {/*            </InputAdornment>*/}
+            {/*          ),*/}
+            {/*        }*/}
+            {/*      : {}*/}
+            {/*  }*/}
+            {/*>*/}
+            {/*  {sortValue.map((option: any) => (*/}
+            {/*    <MenuItem key={option.value} value={option}>*/}
+            {/*      {sort?.label}*/}
+            {/*    </MenuItem>*/}
+            {/*  ))}*/}
+            {/*</TextField>*/}
           </Box>
         </Box>
         <Box>
